@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# User authentication with Devise
+gem 'devise', '>= 3.2.4'
+
 # Changed sprockets gem due to glyphicon issue with newer versions
 gem 'sprockets', '2.11.0'
 
