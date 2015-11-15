@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
 
+# Changed sprockets gem due to glyphicon issue with newer versions
+gem 'sprockets', '2.11.0'
+
 # Simple Form gem
 gem 'simple_form'
 
 # Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.0.6'
 
-# Bootstrap Sass
-gem 'bootstrap-sass', '~> 3.3.5'
+# Bootstrap Sass - changed from 3.3.5 due to glyphicon issue
+gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
@@ -16,7 +19,8 @@ gem 'rails', '4.0.1'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+# gem 'sass-rails', '~> 4.0.0'
+# Commented out due to glyphicon issue
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
