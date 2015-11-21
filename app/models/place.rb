@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
   belongs_to :user
   has_many :comments
+  has_many :photos
 
   # Will_Paginate gem
   self.per_page = 2

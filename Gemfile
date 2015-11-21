@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'fog', '~> 1.3.1'
+
+gem 'carrierwave'
+
 # "Figaro parses a Git-ignored YAML file in your applicaiton and loads its values into ENV."
 gem "figaro"
 
