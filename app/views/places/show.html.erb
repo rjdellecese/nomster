@@ -1,4 +1,12 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
+  
+  <div class="pull-right">
+    <% if current_user && current_user == @place.user %>
+      <%= link_to 'Edit', edit_place_path(@place), :class => 'btn btn-primary' %>
+      <%= link_to 'Delete', place_path(@place), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => 'btn btn-danger' %>
+    <% end %>
+  </div>
+
   <h1><%= @place.name %></h1>
   <i><%= @place.address %></i><br /><br />
   <p><%= @place.description %></p><br />
@@ -34,23 +42,45 @@
   <h1>Photos</h1>
   <br />
   <% @place.photos.each do |photo| %>
-    <%= image_tag photo.picture, size: "250" %><br />
-    <%= photo.caption %>
-  <% end %>
-  <br />
-  <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
-    <%= f.input :picture %>
-    <%= f.input :caption %>
-    <br />
-    <%= f.submit "Upload", :class => 'btn btn-primary' %>
+    <div class="col-xs-12 col-sm-6 col-lg-4 col-lg-2">
+      <div class="thumbnail">
+        <%= image_tag photo.picture %>
+        <div class="caption">
+          <%= photo.caption %>
+        </div>
+      </div>
+    </div>
   <% end %>
 
-  <div class="pull-right">
-    <% if current_user && current_user == @place.user %>
-      <%= link_to 'Edit', edit_place_path(@place), :class => 'btn btn-primary' %>
-      <%= link_to 'Delete', place_path(@place), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => 'btn btn-danger' %>
-    <% end %>
+  <br />
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addPhoto">
+    Upload a Photo
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Upload a Photo</h4>
+        </div>
+        <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
+        <div class="modal-body">
+          <%= f.input :picture %>
+          <%= f.input :caption %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Upload", :class => 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+
 </div>
 
 <div class="clear"></div>
@@ -73,13 +103,13 @@
 
   <!-- Button trigger modal -->
 <div class="col-xs-10 col-xs-offset-1">
-  <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addComment">
     Add a Comment
   </button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="addComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,7 +123,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Save", :class => 'btn btn-primary' %>
+          <%= f.submit "Add", :class => 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
