@@ -1,0 +1,1 @@
+- [ ] make carousel on index page look good on wide resolutions
