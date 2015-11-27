@@ -1,1 +1,4 @@
 - [ ] make carousel on index page look good on wide resolutions
+- [ ] add empty buffer space at the bottom of the layout
+- [ ] change (read: improve) logo font and color
+- [ ] make large buttons (Add Comment, for example) smaller
